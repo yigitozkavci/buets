@@ -5,14 +5,15 @@
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
 	    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-	    <title>Bootstrap 101 Template</title>
+	    <title>Boun Event Tracking System</title>
 
 	    <!-- Bootstrap -->
 	    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet">
 	    <link href="assets/css/small-business.css" rel="stylesheet">
 	    <link href="assets/css/style.css" rel="stylesheet">
-
+	    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+		
 	    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	    <!--[if lt IE 9]>

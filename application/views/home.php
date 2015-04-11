@@ -68,39 +68,27 @@
 
             <hr>
 
-            <!-- Call to Action Well -->
             <div class="row">
-                <div class="col-lg-12">
-                    <div class="well text-center">
-                        This is a well that is a great spot for a business tagline or phone number for easy access!
+                <div class="col-xs-12">
+                    <div class="well">
+                        <form action="">
+                            <div class="col-xs-3">
+                                <div class="well">
+                                    <?php foreach($tags as $tag){ ?>
+                                        <b>Etiketler</b><br>
+                                        <input type="checkbox" name="<?php echo $tag['name']; ?>"><?php echo $tag['name']; ?><br>
+                                    <?php } ?>
+                                </div>
+                            </div>
+                            <div class="col-xs-3">
+                                <input type="text" class="datepicker" name="start_date">
+                                <input type="text" class="datepicker" name="end_date">
+                            </div>
+                            <div class="clearfix"></div>
+                        </form>
                     </div>
                 </div>
-                <!-- /.col-lg-12 -->
             </div>
-            <!-- /.row -->
-
-            <!-- Content Row -->
-            <div class="row">
-                <div class="col-md-4">
-                    <h2>Heading 1</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe rem nisi accusamus error velit animi non ipsa placeat. Recusandae, suscipit, soluta quibusdam accusamus a veniam quaerat eveniet eligendi dolor consectetur.</p>
-                    <a class="btn btn-default" href="#">More Info</a>
-                </div>
-                <!-- /.col-md-4 -->
-                <div class="col-md-4">
-                    <h2>Heading 2</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe rem nisi accusamus error velit animi non ipsa placeat. Recusandae, suscipit, soluta quibusdam accusamus a veniam quaerat eveniet eligendi dolor consectetur.</p>
-                    <a class="btn btn-default" href="#">More Info</a>
-                </div>
-                <!-- /.col-md-4 -->
-                <div class="col-md-4">
-                    <h2>Heading 3</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe rem nisi accusamus error velit animi non ipsa placeat. Recusandae, suscipit, soluta quibusdam accusamus a veniam quaerat eveniet eligendi dolor consectetur.</p>
-                    <a class="btn btn-default" href="#">More Info</a>
-                </div>
-                <!-- /.col-md-4 -->
-            </div>
-            <!-- /.row -->
 
             <!-- Footer -->
             <footer>
