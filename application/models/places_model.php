@@ -14,5 +14,19 @@ class Places_Model extends CI_Model{
 			return row_array();
 		}
 	}
+
+	public function add_place($data){
+		$this->db->insert('places', $data);
+	}
+
+	public function delete_place($id){
+		$this->db->where('id', $id);
+		$this->db->delete('places');
+	}
+
+	public function edit_place($data, $id){
+		$this->db->where('id', $id);
+		$this->db->update('places', $data);
+	}
 }
 ?>

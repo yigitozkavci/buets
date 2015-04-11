@@ -61,5 +61,24 @@ class Events_Model extends CI_Model{
 			return $event;
 		}
 	}
+
+	public function add_event($eventData, $tags){
+		$this->db->insert('events', $eventData);
+		foreach ($tags as $tag) {
+			$tagData['event_id'] = $eventData['id'];
+			$tagData['tag_id'] = $tag['id'];
+			$this->db->insert('event_tags', $tagData);
+		}
+	}
+
+	public function delete_event($id){
+		$this->db->where('id', $id);
+		$this->db->delete('events');
+	}
+
+	public function edit_event($eventData, $id){
+		$this->db->where('id', $id);
+		$this->db->update('events', $eventData);
+	}
 }
 ?>
