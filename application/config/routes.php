@@ -44,6 +44,12 @@ $route['404_override'] = '';
 /* Webservices */
 $route['api/v1/events'] = "webservices/events";
 $route['api/v1/events/(:any)'] = "webservices/events/$1";
+$route['api/v1/organizators'] = "webservices/organizators";
+$route['api/v1/organizators/(:any)'] = "webservices/organizators/$1";
+$route['api/v1/places'] = "webservices/places";
+$route['api/v1/places/(:any)'] = "webservices/places/$1";
+$route['api/v1/tags'] = "webservices/tags";
+$route['api/v1/tags/(:any)'] = "webservices/tags/$1";
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
