@@ -9,6 +9,7 @@
 
 	    <!-- Bootstrap -->
 	    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet">
 	    <link href="assets/css/small-business.css" rel="stylesheet">
 	    <link href="assets/css/style.css" rel="stylesheet">
 

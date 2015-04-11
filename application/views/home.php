@@ -28,14 +28,39 @@
         
             <!-- Heading Row -->
             <div class="row">
-                <div class="col-xs-6">
-                    <img class="img-responsive" src="http://placehold.it/900x700" alt="">
+                <div class="col-xs-6 map-wrapper">
+                    <img class="img-responsive" src="http://placehold.it/900x700" style="height:100%;" alt="">
                 </div>
                 <!-- /.col-md-8 -->
                 <div class="col-xs-6">
-                    <h1>Business Name or Tagline</h1>
-                    <p>This is a template that is great for small businesses. It doesn't have too much fancy flare to it, but it makes a great use of the standard Bootstrap core components. Feel free to use this template for any project you want!</p>
-                    <a class="btn btn-primary btn-lg" href="#">Call to Action!</a>
+                    <div class=".b-events"></div>
+                    <ul class="events">
+                        <?php for($i = 0; $i<15; $i++): ?>
+                            <li class="event">
+                                <img class="event-logo" src="assets/img/logos/exit.png" alt="">
+                                <h2> EXIT Bilişim Etkinliği</h2>
+                                <div class="clearfix"></div>
+                                <div class="details">
+                                    <br>
+                                    <p>Açılımı Expo IT olan EXIT, Boğaziçi Üniversitesi’nde son 5 yıldır
+                                    CompeC tarafından yapılan bir bilişim etkinliği ve tek bilişim fuarıdır.
+                                    Amacı, Türkiye’nin dört bir yanından gelen üniversite öğrencilerini bilişim
+                                    ve teknolojiyle tanıştırmak, yakınlaştırmak, onları yeniliklerden haberdar
+                                    ederek bir ağ oluşmasını sağlamaktır.</p>
+                                    <hr>
+                                    <div class="pull-left date">
+                                        <i class="fa fa-clock-o"></i> 9-10 Nisan 2015<br>
+                                        <i class="fa fa-globe"><a href="#"> compec.boun.edu.tr/exit15</a></i>
+                                    </div>
+                                    <div class="pull-right organizator">
+                                        compec Tarafından Oluşturuldu.
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </li>
+                        <?php endfor; ?>
+                    </ul>
+                    <div class="a.events"></div>
                 </div>
                 <!-- /.col-md-4 -->
             </div>
