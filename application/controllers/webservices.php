@@ -5,6 +5,7 @@ class WebServices extends CI_Controller{
 		$this->load->model('events_model');
 		$this->load->model('organizators_model');
 		$this->load->model('places_model');
+		$this->load->model('tags_model');
 	}
 	public function events($id = FALSE){
 		if($id === FALSE){
