@@ -40,6 +40,23 @@
 
 $route['default_controller'] = "home";
 $route['404_override'] = '';
+$route['home'] = "home";
+
+/* Admin */
+$route['admin'] = "admin";
+$route['admin/login'] = "admin/login";
+$route['admin/addEvent'] = "admin/add_event";
+$route['admin/editEvent/(:any)'] = "admin/edit_event/$1";
+$route['admin/deleteEvent/(:any)'] = "admin/delete_event/$1";
+$route['admin/addOrganizator'] = "admin/add_organizator";
+$route['admin/editOrganizator/(:any)'] = "admin/edit_organizator/$1";
+$route['admin/deleteOrganizator/(:any)'] = "admin/delete_organizator/$1";
+$route['admin/addPlace'] = "admin/add_place";
+$route['admin/editPlace/(:any)'] = "admin/edit_place/$1";
+$route['admin/deletePlace/(:any)'] = "admin/delete_place/$1";
+$route['admin/addTag'] = "admin/add_tag";
+$route['admin/editTag/(:any)'] = "admin/edit_tag/$1";
+$route['admin/deleteTag/(:any)'] = "admin/delete_tag/$1";
 
 /* Webservices */
 $route['api/v1/events'] = "webservices/events";
