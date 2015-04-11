@@ -8,10 +8,10 @@ class Organizators_Model extends CI_Model{
 	public function get_organizators($id = FALSE){
 		if($id === FALSE){
 			$query = $this->db->get('organizators');
-			return result_array();
+			return $query -> result_array();
 		}else{
 			$query = $this->db->get_where('organizators', 'id' => $id);
-			return row_array();
+			return $query -> row_array();
 		}
 	}
 
