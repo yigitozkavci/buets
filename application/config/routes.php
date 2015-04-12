@@ -44,7 +44,9 @@ $route['home'] = "home";
 
 /* Admin */
 $route['admin'] = "admin";
-$route['admin/login'] = "admin/login";
+$route['admin/organizators'] = "admin/organizators";
+$route['admin/places'] = "admin/places";
+$route['admin/tags'] = "admin/tags";
 $route['admin/addEvent'] = "admin/add_event";
 $route['admin/editEvent/(:any)'] = "admin/edit_event/$1";
 $route['admin/deleteEvent/(:any)'] = "admin/delete_event/$1";

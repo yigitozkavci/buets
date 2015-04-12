@@ -6,8 +6,7 @@ class Home extends CI_Controller{
 		$this->load->model('tags_model');
 	}
 	public function index(){
-		$query = $this->events_model->get_events();
-		$events = $query -> result_array();
+		$events = $this->events_model->get_events();
 		if($this->input->post('submit') != NULL){
 			$start_date = $this->input->post('start_date');
 			$end_date = $this->input->post('end_date');

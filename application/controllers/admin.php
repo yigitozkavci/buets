@@ -10,11 +10,28 @@ class Admin extends CI_Controller{
 	}
 
 	public function index(){
-		$this->admin_model->redirect_nonadmin();
-
-		$this->load->view('admin/header');
-		$this->load->view('admin/home');
-		$this->load->view('admin/footer');
+		$data['events'] = $this->events_model->get_events();
+		$this->load->view('templates/header');
+		$this->load->view('admin/home', $data);
+		$this->load->view('templates/footer');
+	}
+	public function organizators(){
+		//$data['organizators'] = $this->organizators_model->get_organizators();
+		$this->load->view('templates/header');
+		$this->load->view('admin/organizators');
+		$this->load->view('templates/footer');
+	}
+	public function places(){
+		$data['places'] = $this->places_model->get_places();
+		$this->load->view('templates/header');
+		$this->load->view('admin/places', $data);
+		$this->load->view('templates/footer');
+	}
+	public function tags(){
+		$data['tags'] = $this->tags_model->get_tags();
+		$this->load->view('templates/header');
+		$this->load->view('admin/tags', $data);
+		$this->load->view('templates/footer');
 	}
 
 	public function login(){
@@ -46,7 +63,7 @@ class Admin extends CI_Controller{
 			$this->events_model->add_event($eventData, $tags);
 
 		}else{
-			$this->load->view('admin/addEvent');
+			$this->load->view('admin/add_event');
 		}
 	}
 
@@ -63,7 +80,7 @@ class Admin extends CI_Controller{
 
 			$this->events_model->edit_event($eventData, $id);
 		}else{
-			$this->load->view('admin/editEvent', $id);
+			$this->load->view('admin/edit_event', $id);
 		}
 	}
 
@@ -78,7 +95,7 @@ class Admin extends CI_Controller{
 
 			$this->organizators_model->add_organizator($organizatorData);
 		}else{
-			$this->load->view('admin/addOrganizator');
+			$this->load->view('admin/add_organizator');
 		}
 	}
 
@@ -89,7 +106,7 @@ class Admin extends CI_Controller{
 
 			$this->organizators_model->edit_organizator($organizatorData, $id);
 		}else{
-			$this->load->view('admin/editOrganizator', $id);
+			$this->load->view('admin/edit_organizator', $id);
 		}
 	}
 
@@ -103,7 +120,7 @@ class Admin extends CI_Controller{
 
 			$this->tags_model->add_tag($tagData);
 		}else{
-			$this->load->view('admin/addTag');
+			$this->load->view('admin/add_tag');
 		}
 	}
 
@@ -113,7 +130,7 @@ class Admin extends CI_Controller{
 
 			$this->tags_model->edit_tag($tagData, $id);
 		}else{
-			$this->load->view('admin/editTag', $id);
+			$this->load->view('admin/edit_tag', $id);
 		}
 	}
 
