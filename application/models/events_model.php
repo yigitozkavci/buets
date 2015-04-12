@@ -36,10 +36,10 @@ class Events_Model extends CI_Model{
 		}else{
 			$query = $this->db->get_where('events', array('id' => $id));
 			$event = $query -> row_array();
-
-			$query = $this->db->get_where('organizators', array('id' => $event['organizator_id']));
+			$query = $this->db->get_where('organizators', array('id' => intval($event['organizator_id'])));
 			$organizator = $query -> row_array();
 			unset($event['organizator_id']);
+
 			$event['organizator_name'] = $organizator['name'];
 
 			$query = $this->db->get_where('places', array('id' => $event['place_id']));

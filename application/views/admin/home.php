@@ -8,9 +8,12 @@
 	            <li class="event">
 	                <img class="event-logo" src="<?php echo base_url(); ?>assets/img/logos/exit.png" alt="">
 	                <h2> EXIT Bilişim Etkinliği</h2>
-					
-	                <i class="fa fa-trash-o fa-2x pull-right" style="color:orange;"></i>
-	                <i class="fa fa-pencil-square-o fa-2x pull-right" style="color:orange;"></i>
+					<a href="<?php echo base_url(); ?>admin/deleteEvent/<?php echo $event['id']; ?>">
+						<i class="fa fa-trash-o fa-2x pull-right" style="color:orange;"></i>
+					</a>
+					<a href="<?php echo base_url(); ?>admin/editEvent/<?php echo $event['id']; ?>">
+						<i class="fa fa-pencil-square-o fa-2x pull-right" style="color:orange;"></i>
+					</a>
 	                <div class="clearfix"></div>
 	                <div class="details">
 	                    <br>

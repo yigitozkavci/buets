@@ -12,7 +12,7 @@
 			</div>
 			<div class="form-group">
 				Organizasyon: 
-				<select name="organization_id" class="form-control">
+				<select name="organizator_id" class="form-control">
 					<?php foreach($organizations as $organization){ ?>
 						<option value="<?php echo $organization['id']; ?>"><?php echo $organization['name']; ?></option>
 					<?php } ?>
@@ -39,7 +39,7 @@
 			<div class="form-group">
 				Site Adresi: <input type="text" name="url" class="form-control" value="<?php echo $event['url']; ?>">
 			</div>
-			<input type="submit" name="submit_event" class="form-control">
+			<input type="submit" name="edit_event" class="form-control">
 		</form>
 	</div>
 </div>
