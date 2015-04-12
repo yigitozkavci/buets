@@ -10,7 +10,7 @@ class Organizators_Model extends CI_Model{
 			$query = $this->db->get('organizators');
 			return $query -> result_array();
 		}else{
-			$query = $this->db->get_where('organizators', 'id' => $id);
+			$query = $this->db->get_where('organizators', array('id' => $id));
 			return $query -> row_array();
 		}
 	}

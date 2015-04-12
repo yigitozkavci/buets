@@ -28,5 +28,11 @@ class Tags_Model extends CI_Model{
 		$this->db->where('id', $id);
 		$this->db->update('tags', $data);
 	}
+
+	public function get_event_tags($event_id){
+		$this->db->where('event_id', $event_id);
+		$query = $this->db->get('tags');
+		return $query->result_array();
+	}
 }
 ?>

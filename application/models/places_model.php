@@ -10,7 +10,7 @@ class Places_Model extends CI_Model{
 			$query = $this->db->get('places');
 			return $query -> result_array();
 		}else{
-			$query = $this->db->get_where('places', 'id' => $id);
+			$query = $this->db->get_where('places', array('id' => $id));
 			return $query -> row_array();
 		}
 	}
