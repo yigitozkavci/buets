@@ -10,27 +10,29 @@ class Events_Model extends CI_Model{
 			$query = $this->db->get('events');
 			$events = $query -> result_array();
 
-			foreach($events as $event){
+			foreach($events as $key => $event){
 				$query = $this->db->get_where('organizators', array('id' => $event['organizator_id']));
 				$organizator = $query -> row_array();
 				unset($event['organizator_id']);
-				$event['organizator_name'] = $organizator['name'];
+				$events[$key]['organizator_name'] = $organizator['name'];
 
 				$query = $this->db->get_where('places', array('id' => $event['place_id']));
 				$place = $query -> row_array();
 				unset($event['place_id']);
-				$event['place_name'] = $place['name'];
+				$events[$key]['place_name'] = $place['name'];
 
-				$query = $this->db->get_where('event_tags', array('event_id' => $event['id']));
+				$query = $this->db->get_where('event_tags', array('event_id' => $events[$key]['id']));
 				$event_tags = $query -> result_array();
-				$event['event_tags'] = $event_tags;
+				$events[$key]['event_tags'] = $event_tags;
 
-				foreach ($event_tags as $event_tag) {
+				foreach ($events[$key]['event_tags'] as $event_tag) {
 					$query = $this->db->get_where('tags', array('id' => $event_tag['tag_id']));
-					unset($event_tag['tag_id']);
+					
 					$tag = $query -> row_array();
-					$event_tag['tag_name'] = $tag['name'];
+					$events[$key]['tags'][] = $tag['name'];
+
 				}
+				unset($events[$key]['event_tags']);
 			}
 			return $events;
 		}else{

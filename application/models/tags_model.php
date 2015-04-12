@@ -31,7 +31,7 @@ class Tags_Model extends CI_Model{
 
 	public function get_event_tags($event_id){
 		$this->db->where('event_id', $event_id);
-		$query = $this->db->get('tags');
+		$query = $this->db->get('event_tags');
 		return $query->result_array();
 	}
 }

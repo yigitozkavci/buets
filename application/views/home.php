@@ -95,7 +95,7 @@
                     <input type="text" class="datepicker" name="end_date" placeholder="Bitiş" style="margin-top:5px;">
                 </div>
                 <div class="col-xs-3">
-                    <input type="submit" class="btn btn-orange">
+                    <input type="submit" class="btn btn-orange" name="submit">
                 </div>
                 <div class="clearfix"></div>
             </form>

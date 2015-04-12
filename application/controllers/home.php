@@ -8,33 +8,52 @@ class Home extends CI_Controller{
 		$this->load->model('places_model');
 	}
 	public function index(){
-		$events = $this->events_model->get_events();
 		if($this->input->post('submit') != NULL){
-			$start_date = $this->input->post('start_date');
-			$end_date = $this->input->post('end_date');
-			$tags = $this->input->post('tags');
-			foreach ($events as $event) {
-				if($event['date']>$end_date || $event['date']<$start_date){
-					continue;
-				}else{
-					$query =$this->tags_model->get_event_tags();
-					$event_tags = $query ->result_array();
-					foreach ($tags as $tag) {
-						if(!in_array($tag, $event_tags) || !in_array($event, $data['events'])){
-							$data['events'][] = $event;
+			$events = $this->events_model->get_events();
+
+			foreach ($events as $key => $event) {
+				date_default_timezone_set('Europe/Istanbul');
+
+				$start_date = new DateTime($this->input->post('start_date'));
+				$end_date = new DateTime($this->input->post('end_date'));
+
+				$event_start_date = new DateTime($event['start_date']);
+				$event_end_date = new DateTime($event['end_date']);
+
+
+				$tags = $this->input->post('tags');
+				$event_tags = $this->events_model->get_event_tags($event['id']);
+				if($start_date != NULL && $end_date != NULL)
+					if($start_date < $event_start_date || $start_date > $event_end_date){
+						
+	
+					}
+					
+				if($tags != NULL){
+					$contains = false;
+					foreach($tags as $tag){
+						if(in_array($tag, $event_tags)){
+							$contains = true;
 						}
 					}
+					if(!$contains){
+						unset($events[$key]);
+					}
 				}
+				
 			}	
 		}else{
-			$data['events'] = $this->events_model->get_events();
+			$events = $this->events_model->get_events();
+
 		}
+		
 		foreach($events as $key => $event){
 			$events[$key]['organizator'] = $this->organizators_model->get_organizators($event['organizator_id']);
 		}
 		foreach($events as $key => $event){
 			$events[$key]['place'] = $this->places_model->get_places($event['place_id']);
 		}
+		var_dump("wow");
 		$data['events'] = $events;
 		$data['tags'] = $this->tags_model->get_tags();
 		$this->load->view('templates/header');
