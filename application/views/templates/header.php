@@ -8,10 +8,10 @@
 	    <title>Boun Event Tracking System</title>
 
 	    <!-- Bootstrap -->
-	    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet">
-	    <link href="assets/css/small-business.css" rel="stylesheet">
-	    <link href="assets/css/style.css" rel="stylesheet">
+	    <link href="<?php echo base_url(); ?>assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	    <link href="<?php echo base_url(); ?>assets/font-awesome/css/font-awesome.css" rel="stylesheet">
+	    <link href="<?php echo base_url(); ?>assets/css/small-business.css" rel="stylesheet">
+	    <link href="<?php echo base_url(); ?>assets/css/style.css" rel="stylesheet">
 	    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 		
 	    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
