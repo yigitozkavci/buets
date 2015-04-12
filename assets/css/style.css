@@ -62,3 +62,10 @@ ul.events > li.event > .details{
 	-moz-box-shadow: 0px -20px 22px -13px rgba(0,0,0,0.36);
 	box-shadow: 0px -20px 22px -13px rgba(0,0,0,0.36);
 }
+/* Filters */
+.btn.btn-orange{
+	background-color:orange;
+	border-radius:3px;
+	border:1px solid #C98200;
+	color:#FFFFFF;
+}

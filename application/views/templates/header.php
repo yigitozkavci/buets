@@ -22,3 +22,5 @@
 	    <![endif]-->
   	</head>
   	<body>
+	  	<section id="main">
+	    	<div class="hidden-xs">
