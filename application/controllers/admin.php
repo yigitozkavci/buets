@@ -72,6 +72,9 @@ class Admin extends CI_Controller{
 	}
 
 	public function edit_event($id){
+		$data['organizations'] = $this->organizators_model->get_organizators();
+		$data['places'] = $this->places_model->get_places();
+		$data['event'] = $this->events_model->get_events($id);
 		if($this->input->post('edit_event') != NULL){
 			$eventData['name'] = $this->input->post('name');
 			$eventData['description'] = $this->input->post('description');
@@ -84,7 +87,9 @@ class Admin extends CI_Controller{
 
 			$this->events_model->edit_event($eventData, $id);
 		}else{
-			$this->load->view('admin/edit_event', $id);
+			$this->load->view('templates/header');
+			$this->load->view('admin/edit_event', $data);
+			$this->load->view('templates/footer');
 		}
 	}
 

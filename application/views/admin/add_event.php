@@ -1,3 +1,4 @@
+<a href="<?php echo base_url(); ?>admin">&lt; Geri Git</a>
 <div class="row">
 	<div class="col-xs-12 col-md-6">
 		<h1>Etkinlik Ekle</h1>
