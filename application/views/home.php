@@ -41,7 +41,7 @@
                 size: new google.maps.Size(20, 20)
             });
             marker.info = new google.maps.InfoWindow({
-              content: "<img style='width:50px;' src='"+base_url+"assets/img/logos/"+events[i].logo_name+".png"+"'><h1>"+events[i].name+"</h1><p>"+events[i].description+"</p>"
+              content: "<img style='width:50px;' src='"+base_url+"assets/img/logos/"+events[i].logo_name+".png"+"'><h1>"+events[i].name+"</h1><p>"+events[i].description+"</p><hr><i class='fa fa-clock-o'> "+events[i].start_date
             });
             setTimeout(function () { marker.info.close(); }, 5000);
             google.maps.event.addListener(marker, 'click', function() {
