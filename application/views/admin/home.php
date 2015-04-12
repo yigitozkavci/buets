@@ -6,7 +6,7 @@
 		<ul class="events" style="margin-top:15px;">
 			<?php foreach($events as $event){ ?>
 	            <li class="event">
-	                <img class="event-logo" src="<?php echo base_url(); ?>assets/img/logos/exit.png" alt="">
+	                <img class="event-logo" src="assets/img/logos/<?php echo $event['logo_name']; ?>.png" alt="">
 	                <h2><?php echo $event['name']; ?></h2>
 					<a href="<?php echo base_url(); ?>admin/deleteEvent/<?php echo $event['id']; ?>">
 						<i class="fa fa-trash-o fa-2x pull-right" style="color:orange;"></i>
@@ -24,7 +24,7 @@
 							<?php echo $event['start_date']; ?> ->
 							<?php echo $event['end_date']; ?>
 	                        <br>
-	                        <i class="fa fa-globe"><a href="#"> compec.boun.edu.tr/exit15</a></i>
+	                        <i class="fa fa-globe"><a href="#"> <?php echo $event['url']; ?></a></i>
 	                    </div>
 	                    <div class="pull-right organizator">
 	                        <?php echo $event['organizator']['name']; ?> Tarafından Oluşturuldu.

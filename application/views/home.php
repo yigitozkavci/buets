@@ -1,36 +1,73 @@
 <!-- Heading Row -->
+<input type="hidden" id="base_url" value="<?php echo base_url(); ?>">
 <div class="row">
-    <div class="col-xs-6 map-wrapper">
-        <img class="img-responsive" src="http://placehold.it/900x700" style="height:100%;" alt="">
+    <div class="col-xs-8 map-wrapper">
+        <div id="map-canvas" style="width:100%; height:600px;"></div>
     </div>
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script>
+        function initialize() {
+            var map = new google.maps.Map();
+        }
+    </script>
+    <script>
+    var base_url = document.getElementById("base_url").value;
+      function initialize() {
+        var mapCanvas = document.getElementById('map-canvas');
+        var mapOptions = {
+          center: new google.maps.LatLng(41.083923, 29.052905),
+          zoom: 18,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        var map = new google.maps.Map(mapCanvas, mapOptions)
+        var events = <?php echo json_encode($events); ?>;
+        for(var i = 0; i<events.length; i++){
+            var icon = {
+            url: base_url+"assets/img/logos/"+events[i].logo_name+".png", // url
+            scaledSize: new google.maps.Size(100, 100), // scaled size
+            origin: new google.maps.Point(0,0), // origin
+            anchor: new google.maps.Point(0, 0) // anchor
+            };
+            var coordinates = events[i].place.coordinates;
+            var Lat = parseFloat(coordinates.split(", ")[0]);
+            var Lng = parseFloat(coordinates.split(", ")[1]);
+            var marker = new google.maps.Marker({
+                position: new google.maps.LatLng(Lat, Lng),
+                icon: icon,
+                map: map,
+                size: new google.maps.Size(100, 100)
+            });
+        }
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
     <!-- /.col-md-8 -->
-    <div class="col-xs-6">
+    <div class="col-xs-4">
         <div class=".b-events"></div>
         <ul class="events">
-            <?php for($i = 0; $i<15; $i++): ?>
+            <?php foreach($events as $event){ ?>
                 <li class="event">
-                    <img class="event-logo" src="assets/img/logos/exit.png" alt="">
-                    <h2> EXIT Bilişim Etkinliği</h2>
+                    <img class="event-logo" src="assets/img/logos/<?php echo $event['logo_name']; ?>.png" alt="">
+                    <h2> <?php echo $event['name']; ?></h2>
                     <div class="clearfix"></div>
                     <div class="details">
                         <br>
-                        <p>Açılımı Expo IT olan EXIT, Boğaziçi Üniversitesi’nde son 5 yıldır
-                        CompeC tarafından yapılan bir bilişim etkinliği ve tek bilişim fuarıdır.
-                        Amacı, Türkiye’nin dört bir yanından gelen üniversite öğrencilerini bilişim
-                        ve teknolojiyle tanıştırmak, yakınlaştırmak, onları yeniliklerden haberdar
-                        ederek bir ağ oluşmasını sağlamaktır.</p>
+                        <p><?php echo $event['description']; ?></p>
                         <hr>
                         <div class="pull-left date">
-                            <i class="fa fa-clock-o"></i> 9-10 Nisan 2015<br>
-                            <i class="fa fa-globe"><a href="#"> compec.boun.edu.tr/exit15</a></i>
+                            <i class="fa fa-clock-o"></i>
+                            <?php echo $event['start_date']; ?> ->
+                            <?php echo $event['end_date']; ?>
+                            <br>
+                            <i class="fa fa-globe"><a href="#"> <?php echo $event['url']; ?></a></i>
                         </div>
                         <div class="pull-right organizator">
-                            compec Tarafından Oluşturuldu.
+                            <?php echo $event['organizator']['name']; ?> Tarafından Oluşturuldu.
                         </div>
                         <div class="clearfix"></div>
                     </div>
                 </li>
-            <?php endfor; ?>
+            <?php } ?>
         </ul>
         <div class="a.events"></div>
     </div>

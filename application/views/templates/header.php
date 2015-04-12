@@ -21,12 +21,12 @@
 	      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	    <![endif]-->
   	</head>
-  	<body>
+  	<body style="padding-top:60px;">
 	  	<section id="main">
 	    	<div class="hidden-xs">
 	    	<!-- Navigation -->
 			<nav class="navbar navbar-fixed-top" role="navigation">
-			    <div class="container">
+			    <div class="container-fluid">
 			        <div class="col-xs-12">
 			            <!-- Brand and toggle get grouped for better mobile display -->
 			            <div class="navbar-header">
@@ -47,4 +47,4 @@
 			    <!-- /.container -->
 			</nav>
 			<!-- Page Content -->
-			<div class="container">
+			<div class="container-fluid">
