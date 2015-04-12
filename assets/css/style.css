@@ -44,7 +44,7 @@ ul.events > li.event > h2{
 	-webkit-user-select:none;
 	float:left;
 	padding-left:3px;
-	border-left:1px solid gray;
+	
 }
 ul.events li.event .event-logo{
 	height:22px;

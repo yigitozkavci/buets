@@ -29,7 +29,7 @@
 			    <div class="container-fluid">
 			        <div class="col-xs-12">
 			            <!-- Brand and toggle get grouped for better mobile display -->
-			            <div class="navbar-header">
+			            <div class="navbar-header" style="color:white;width:200px;">
 			                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 			                    <span class="sr-only">Toggle navigation</span>
 			                    <span class="icon-bar"></span>
@@ -37,8 +37,11 @@
 			                    <span class="icon-bar"></span>
 			                </button>
 			                <a class="navbar-brand" href="<?php echo base_url(); ?>">
-			                    <img src="http://placehold.it/150x50&text=Logo" alt="">
+			                    <img src="<?php echo base_url(); ?>assets/img/logo.png" alt="" style="height:50px;float:left;">
 			                </a>
+			                <div style="margin-left:10px;float:left;margin-top:3px;">
+			                	<b>Boğaziçi Üniversitesi<br>Etkinlik Takip Sistemi</b>
+			                </div>
 			                <div class="clearfix"></div>
 			            </div>
 			            <!-- /.navbar-collapse -->

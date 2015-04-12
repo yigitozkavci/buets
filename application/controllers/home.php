@@ -20,40 +20,34 @@ class Home extends CI_Controller{
 				$event_start_date = new DateTime($event['start_date']);
 				$event_end_date = new DateTime($event['end_date']);
 
-
-				$tags = $this->input->post('tags');
-				$event_tags = $this->events_model->get_event_tags($event['id']);
 				if($start_date != NULL && $end_date != NULL)
-					if($start_date < $event_start_date || $start_date > $event_end_date){
-						
-	
+					if($end_date < $event_start_date || $start_date > $event_end_date){
+						unset($events[$key]);
 					}
-					
+				$tags = $this->input->post('tags');
 				if($tags != NULL){
+					$event_tags = $this->tags_model->get_event_tags($event['id']);
 					$contains = false;
 					foreach($tags as $tag){
-						if(in_array($tag, $event_tags)){
-							$contains = true;
+						foreach($event_tags as $event_tag){
+							if($tag == $event_tag['tag_id'])
+								$contains = true;
 						}
 					}
 					if(!$contains){
 						unset($events[$key]);
 					}
 				}
-				
 			}	
 		}else{
 			$events = $this->events_model->get_events();
-
 		}
-		
 		foreach($events as $key => $event){
 			$events[$key]['organizator'] = $this->organizators_model->get_organizators($event['organizator_id']);
 		}
 		foreach($events as $key => $event){
 			$events[$key]['place'] = $this->places_model->get_places($event['place_id']);
 		}
-		var_dump("wow");
 		$data['events'] = $events;
 		$data['tags'] = $this->tags_model->get_tags();
 		$this->load->view('templates/header');

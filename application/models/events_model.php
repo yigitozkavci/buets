@@ -29,7 +29,7 @@ class Events_Model extends CI_Model{
 					$query = $this->db->get_where('tags', array('id' => $event_tag['tag_id']));
 					
 					$tag = $query -> row_array();
-					$events[$key]['tags'][] = $tag['name'];
+					$events[$key]['tags'][] = $tag['id'];
 
 				}
 				unset($events[$key]['event_tags']);

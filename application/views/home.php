@@ -22,21 +22,31 @@
         var map = new google.maps.Map(mapCanvas, mapOptions)
         var events = <?php echo json_encode($events); ?>;
         for(var i = 0; i<events.length; i++){
+
             var icon = {
             url: base_url+"assets/img/logos/"+events[i].logo_name+".png", // url
-            scaledSize: new google.maps.Size(100, 100), // scaled size
+            scaledSize: new google.maps.Size(70, 70), // scaled size
             origin: new google.maps.Point(0,0), // origin
             anchor: new google.maps.Point(0, 0) // anchor
             };
+
             var coordinates = events[i].place.coordinates;
             var Lat = parseFloat(coordinates.split(", ")[0]);
             var Lng = parseFloat(coordinates.split(", ")[1]);
-            var marker = new google.maps.Marker({
+            marker = new google.maps.Marker({
                 position: new google.maps.LatLng(Lat, Lng),
-                icon: icon,
+                icon:icon,
                 map: map,
-                size: new google.maps.Size(100, 100)
+                clickable: true,
+                size: new google.maps.Size(20, 20)
             });
+            marker.info = new google.maps.InfoWindow({
+              content: "<img style='width:50px;' src='"+base_url+"assets/img/logos/"+events[i].logo_name+".png"+"'><h1>"+events[i].name+"</h1><p>"+events[i].description+"</p>"
+            });
+            setTimeout(function () { marker.info.close(); }, 5000);
+            google.maps.event.addListener(marker, 'click', function() {
+              this.info.open(map, this);
+            }); 
         }
       }
       google.maps.event.addDomListener(window, 'load', initialize);
