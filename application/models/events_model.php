@@ -64,9 +64,12 @@ class Events_Model extends CI_Model{
 
 	public function add_event($eventData, $tags){
 		$this->db->insert('events', $eventData);
+		$insert_id = $this->db->insert_id();
 		foreach ($tags as $tag) {
-			$tagData['event_id'] = $eventData['id'];
-			$tagData['tag_id'] = $tag['id'];
+			$tagData['event_id'] = $insert_id;
+			$query = $this->db->get_where('tags', array('name' => $tag));
+			$theTag = $query -> row_array();
+			$tagData['tag_id'] = $theTag['id'];
 			$this->db->insert('event_tags', $tagData);
 		}
 	}
