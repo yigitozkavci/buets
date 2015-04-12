@@ -50,14 +50,12 @@ class Events_Model extends CI_Model{
 			$query = $this->db->get_where('event_tags', array('event_id' => $event['id']));
 			$event_tags = $query -> result_array();
 			$event['event_tags'] = $event_tags;
-
-				foreach ($event_tags as $event_tag) {
-					$query = $this->db->get_where('tags', array('id' => $event_tag['tag_id']));
-					unset($event_tag['tag_id']);
-					$tag = $query -> row_array();
-					$event_tag['tag_name'] = $tag['name'];
-				}
-
+			foreach ($event_tags as $event_tag) {
+				$query = $this->db->get_where('tags', array('id' => $event_tag['tag_id']));
+				unset($event_tag['tag_id']);
+				$tag = $query -> row_array();
+				$event_tag['tag_name'] = $tag['name'];
+			}
 			return $event;
 		}
 	}
@@ -65,11 +63,9 @@ class Events_Model extends CI_Model{
 	public function add_event($eventData, $tags){
 		$this->db->insert('events', $eventData);
 		$insert_id = $this->db->insert_id();
+		$tagData['event_id'] = $insert_id;
 		foreach ($tags as $tag) {
-			$tagData['event_id'] = $insert_id;
-			$query = $this->db->get_where('tags', array('name' => $tag));
-			$theTag = $query -> row_array();
-			$tagData['tag_id'] = $theTag['id'];
+			$tagData['tag_id'] = $tag;
 			$this->db->insert('event_tags', $tagData);
 		}
 	}

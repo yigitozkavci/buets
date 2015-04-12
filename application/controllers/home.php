@@ -4,6 +4,7 @@ class Home extends CI_Controller{
 		parent::__construct();
 		$this->load->model('events_model');
 		$this->load->model('tags_model');
+		$this->load->model('organizators_model');
 	}
 	public function index(){
 		$events = $this->events_model->get_events();
@@ -27,8 +28,10 @@ class Home extends CI_Controller{
 		}else{
 			$data['events'] = $this->events_model->get_events();
 		}
+		foreach($events as $key => $event){
+			$events[$key]['organizator_name'] = $this->organizators_model->get_organizators($event['organizator_id']);
+		}
 		$data['tags'] = $this->tags_model->get_tags();
-
 		$this->load->view('templates/header');
 		$this->load->view('home', $data);
 		$this->load->view('templates/footer');

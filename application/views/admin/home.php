@@ -7,7 +7,7 @@
 			<?php foreach($events as $event){ ?>
 	            <li class="event">
 	                <img class="event-logo" src="<?php echo base_url(); ?>assets/img/logos/exit.png" alt="">
-	                <h2> EXIT Bilişim Etkinliği</h2>
+	                <h2><?php echo $event['name']; ?></h2>
 					<a href="<?php echo base_url(); ?>admin/deleteEvent/<?php echo $event['id']; ?>">
 						<i class="fa fa-trash-o fa-2x pull-right" style="color:orange;"></i>
 					</a>
@@ -17,18 +17,17 @@
 	                <div class="clearfix"></div>
 	                <div class="details">
 	                    <br>
-	                    <p>Açılımı Expo IT olan EXIT, Boğaziçi Üniversitesi’nde son 5 yıldır
-	                    CompeC tarafından yapılan bir bilişim etkinliği ve tek bilişim fuarıdır.
-	                    Amacı, Türkiye’nin dört bir yanından gelen üniversite öğrencilerini bilişim
-	                    ve teknolojiyle tanıştırmak, yakınlaştırmak, onları yeniliklerden haberdar
-	                    ederek bir ağ oluşmasını sağlamaktır.</p>
+	                    <p><?php echo $event['description']; ?></p>
 	                    <hr>
 	                    <div class="pull-left date">
-	                        <i class="fa fa-clock-o"></i> 9-10 Nisan 2015<br>
+	                        <i class="fa fa-clock-o"></i>
+							<?php echo $event['start_date']; ?> ->
+							<?php echo $event['end_date']; ?>
+	                        <br>
 	                        <i class="fa fa-globe"><a href="#"> compec.boun.edu.tr/exit15</a></i>
 	                    </div>
 	                    <div class="pull-right organizator">
-	                        compec Tarafından Oluşturuldu.
+	                        <?php echo $event['organizator']['name']; ?> Tarafından Oluşturuldu.
 	                    </div>
 	                    <div class="clearfix"></div>
 	                </div>

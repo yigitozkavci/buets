@@ -10,7 +10,11 @@ class Admin extends CI_Controller{
 	}
 
 	public function index(){
-		$data['events'] = $this->events_model->get_events();
+		$events = $this->events_model->get_events();
+		foreach($events as $key => $event){
+			$events[$key]['organizator'] = $this->organizators_model->get_organizators($event['organizator_id']);
+		}
+		$data['events'] = $events;
 		$this->load->view('templates/header');
 		$this->load->view('admin/home', $data);
 		$this->load->view('templates/footer');
@@ -50,6 +54,7 @@ class Admin extends CI_Controller{
 	public function add_event(){
 		$data['organizations'] = $this->organizators_model->get_organizators();
 		$data['places'] = $this->places_model->get_places();
+		$data['tags'] = $this->tags_model->get_tags();
 		if($this->input->post('submit_event') != NULL){
 
 			$eventData['name'] = $this->input->post('name');
@@ -60,7 +65,7 @@ class Admin extends CI_Controller{
 			$eventData['start_date'] = $this->input->post('start_date');
 			$eventData['end_date'] = $this->input->post('end_date');
 			$eventData['url'] = $this->input->post('url');
-			$tags = explode(', ', $this->input->post('tags'));
+			$tags = $this->input->post('tags');
 
 			$this->events_model->add_event($eventData, $tags);
 
