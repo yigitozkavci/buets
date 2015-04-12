@@ -48,6 +48,8 @@ class Admin extends CI_Controller{
 	}
 
 	public function add_event(){
+		$data['organizations'] = $this->organizators_model->get_organizators();
+		$data['places'] = $this->places_model->get_places();
 		if($this->input->post('submit_event') != NULL){
 
 			$eventData['name'] = $this->input->post('name');
@@ -63,7 +65,9 @@ class Admin extends CI_Controller{
 			$this->events_model->add_event($eventData, $tags);
 
 		}else{
-			$this->load->view('admin/add_event');
+			$this->load->view('templates/header');
+			$this->load->view('admin/add_event', $data);
+			$this->load->view('templates/footer');
 		}
 	}
 
